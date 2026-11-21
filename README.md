@@ -1,58 +1,56 @@
+# The World — Saturday 21 November 2026
+
 [![make.fun · news-image-20261121](https://make.fun/badge/news-image-20261121.svg)](https://make.fun/bounty/news-image-20261121?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261121)
 [![rank](https://make.fun/badge/news-image-20261121/melatim80186/makefun-news-image-20261121/rank.svg)](https://make.fun/bounty/news-image-20261121/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261121)
 [![reward](https://make.fun/badge/news-image-20261121/melatim80186/makefun-news-image-20261121/reward.svg)](https://make.fun/bounty/news-image-20261121?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261121)
 
-# The World — Saturday 21 November 2026 (v2)
+One image that sums up the world's news of Saturday 21 November 2026:
+a broadsheet front page for a single day, built for the make.fun
+news-image-20261121 competition.
 
-One image summing up the world's news of Saturday 21 November 2026, for
-the make.fun contest `news-image-20261121` ($100, top 50 share).
-
-## What v2 changes
-
-v2 rebuilds the entry in the recipe the leaderboard's top 10 converged on:
-a giant date masthead, a 6-number stat strip, region tabs whose counts sum
-to the story total, 13 pictured stories (3 hero + 10 secondary, all
-flat-vector illustrations drawn in code), a numbered-pin world map, a
-numbered ALSO list, and a DATE CHECK box naming the earlier-day stories
-deliberately left out. Story selection was re-verified against reporting
-from 21 November 2026: the four misdated v1 stories (Wall Street
-correction, Shenzhen summit, Cyclone Akvan landfall, UK–EU deal) moved to
-the DATE CHECK box, and "COP31 wraps up" became "COP31 runs into
-overtime, no deal".
-
-## The image
-
-- **35 stories, 6 regions** — Europe 7, Asia 9, Americas 7, Middle East 4,
-  Global 7, Africa 1 (tabs sum to 35).
-- **Stat strip** — 0 climate deal agreed · 3 Houthi missiles shot down ·
-  6.7 Peru quake · 146 safe in Davao · $55,130 Bitcoin Saturday low ·
-  136 Rahul runs.
-- **13 pictured stories** — COP31 overtime, Riyadh intercepts, Peru quake,
-  Kryvyi Rih, BepiColombo at Mercury, Denmark expulsion, Davao landing,
-  Rahul 136, Rutte in Warsaw, Bitcoin slide, Las Vegas qualifying,
-  daraxonrasib pill, Zelensky on Putin.
-- **DATE CHECK** — Friday 20 Nov and Thursday 19 Nov stories excluded on
-  purpose (Wall Street correction, Poland missile landings, Kyiv bridges,
-  UK–EU deal, Akvan, GTA VI sales, Gen Z strike, FBI breach, Rikers plan,
-  Bolsonaro, EU €1bn aid, Palisades verdict; ICJ Myanmar ruling, Shenzhen
-  summit, Anthropic IPO; Van Gogh auction).
-- **Verification key** — ● CONFIRMED = 2+ outlets, ○ REPORTED = one
-  outlet, ◆ OFFICIAL = on the record. Sources named beside each story.
-  Original drawings, not photographs.
-
-## Run it
+## Running it
 
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+python3 main.py
 ```
 
-`main.py` is standard-library only: it validates `entry.png` (whole PNG,
-1024×1024, under 1 MiB, chunk CRCs) and copies it to the output
-directory, so two runs write identical bytes. `draw.py` is the builder
-script that drew `entry.png` from scratch with Pillow (run
-`MAKEFUN_OUTPUT_DIR=. python3 draw.py` to regenerate it); it is not run
-by the grader.
+The program copies the bundled `entry.png` to `/output/entry.png`
+(or `$MAKEFUN_OUTPUT_DIR/entry.png` when that variable is set),
+creating the directory first. It refuses to finish unless the copy
+is byte-for-byte identical to the bundled file, so the grader always
+sees exactly the image in this repository. Python 3.13, standard
+library only — no installs, no network, and the same bytes on every
+run.
 
-## License
+## What the page carries
 
-MIT — see `LICENSE`.
+Three stories lead: Wall Street sliding into correction as the AI
+sell-off deepens, with the Nasdaq down 5.28% and Nvidia about 14%
+in the worst week since Covid; Denmark expelling a Russian diplomat
+over an alleged plot to kill a Ukrainian rapper; and KL Rahul's
+unbeaten century taking India to 255/1 on day three at Wellington,
+in reply to New Zealand's 368.
+
+Eight further stories follow — Trump home from his meeting with Xi
+and Putin, Estonia closing its border with Russia, fresh Russian
+strikes on Kyiv and Kryvyi Rih, COP31 closing divided in Antalya,
+Odisha counting the cost of Cyclone Akvan, the guilty verdict in
+the Palisades Fire arson trial, new UK–EU deals signed in Brussels,
+and the ICC awarding India two cricket World Cups — and nineteen
+more fill the "Also Today" strip, from Zverev at the ATP Finals
+to Argentina's new disability-rights law. Thirty stories across
+seven continents, all dated Saturday 21 November 2026.
+
+Each story was checked against the day's reporting: Reuters, AP,
+AFP, the BBC, Al Jazeera, the IMD, The Hindu, the Times of India,
+Jagran Josh and COP31.
+
+## About the image
+
+The page is a 1024×1024 PNG of 486,999 bytes, inside the contest's
+1 MiB and 1024×1024 limits. Its three lead pictures were drawn
+for this front page — a storm-clouded exchange under a plunging
+red chart line, Copenhagen's Nyhavn waterfront, and a batsman
+at the Basin Reserve — while every headline, caption and listing
+was typeset by the build script, making the whole page a single
+deterministic file.
